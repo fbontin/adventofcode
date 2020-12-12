@@ -1,5 +1,5 @@
 (ns app.runner
-  (:require [app.day10p2 :refer [run]]))
+  (:require [app.day12p2 :refer [run]]))
 
 ;; currently broken in shadow-cljs
 (set! *warn-on-infer* true)
