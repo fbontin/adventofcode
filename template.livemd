@@ -1,0 +1,53 @@
+# Template
+
+## Helper functions
+
+To start coding, copy this template!
+
+Docs for elixir: https://hexdocs.pm/elixir/1.12
+
+```elixir
+defmodule Livebook.Helper do
+  @moduledoc """
+  Helper functions like for parsing and stuff
+  """
+  def to_rows(input) do
+    input |> String.split("\n", trim: true)
+  end
+
+  def read_input(field_name) do
+    IO.getn(field_name, 1_000_000)
+    |> to_rows()
+  end
+end
+```
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"1020\n1000\n400\n555"} -->
+
+## Part 1
+
+```elixir
+parse_input = fn ->
+  Livebook.Helper.read_input('input')
+  |> Enum.map(fn a -> String.to_integer(a) end)
+end
+
+parsed = parse_input.()
+
+# parsed |> 
+```
+
+## Part 2
+
+```elixir
+parse_input = fn ->
+  Livebook.Helper.read_input('input')
+  |> Enum.map(fn a -> String.to_integer(a) end)
+end
+
+parsed = parse_input.()
+
+# parsed |> 
+```
