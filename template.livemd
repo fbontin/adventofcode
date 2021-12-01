@@ -29,25 +29,25 @@ end
 ## Part 1
 
 ```elixir
-parse_input = fn ->
-  Livebook.Helper.read_input('input')
-  |> Enum.map(fn a -> String.to_integer(a) end)
+defmodule DayX do
+  def parse_input() do
+    Livebook.Helper.read_input('input')
+    |> Enum.map(fn a -> String.to_integer(a) end)
+  end
 end
 
-parsed = parse_input.()
-
-# parsed |> 
+parsed = DayX.parse_input()
 ```
 
 ## Part 2
 
 ```elixir
-parse_input = fn ->
-  Livebook.Helper.read_input('input')
-  |> Enum.map(fn a -> String.to_integer(a) end)
+defmodule DayX do
+  def parse_input() do
+    Livebook.Helper.read_input('input')
+    |> Enum.map(fn a -> String.to_integer(a) end)
+  end
 end
 
-parsed = parse_input.()
-
-# parsed |> 
+parsed = DayX.parse_input()
 ```
