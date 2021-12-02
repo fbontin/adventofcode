@@ -2,7 +2,16 @@
 
 Solutions to Advent of Code for 2021
 
-Code runs in Elixir using [Livebook](https://livebook.dev/).
+## To start
 
-To start, run this in the terminal:
+`iex -S mix`
+
+Then to run just call the function, e.g. for day2:
+`Day2.part1`
+
+## Day 1
+
+Solution for day 1 is made using [Livebook](https://livebook.dev/). I encountered some problems with livebook later so chose "regular" Elixir for the other days.
+
+To start Livebook, run this in the terminal:
 `livebook server`
