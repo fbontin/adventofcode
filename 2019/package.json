@@ -1,0 +1,28 @@
+{
+  "name": "adventofcode2019",
+  "version": "1.0.0",
+  "description": "Solutions for the 2019 edition of adventofcode.com",
+  "main": "index.js",
+  "scripts": {
+    "ts": "ts-node runner.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbontin/adventofcode2019.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/fbontin/adventofcode2019/issues"
+  },
+  "homepage": "https://github.com/fbontin/adventofcode2019#readme",
+  "dependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.17",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
+  }
+}
