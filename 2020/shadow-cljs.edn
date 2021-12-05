@@ -1,0 +1,12 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies
+ [[cider/cider-nrepl "0.21.0"]  [clj-kondo "RELEASE"]]
+
+ :builds {:app
+          {:main app.runner/main
+           :target :node-script
+           :output-to "build.js"}}}
+
