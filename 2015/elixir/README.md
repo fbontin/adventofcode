@@ -1,6 +1,6 @@
 # Elixir
 
-**TODO: Add description**
+Solutions to Advent of Code 2015, in Elixir.
 
 ## Installation
 
