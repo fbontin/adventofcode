@@ -48,4 +48,31 @@ defmodule Day6 do
     |> Map.values()
     |> Enum.sum()
   end
+
+  def get_change_from_instr(instr) do
+    case instr do
+      "on" -> 1
+      "off" -> -1
+      "toggle" -> 2
+    end
+  end
+
+  def run2([instr, p1, p2], lights) do
+    change = get_change_from_instr(instr)
+
+    get_points(p1, p2)
+    |> Enum.into(%{}, fn p -> {p, change} end)
+    |> Map.merge(lights, fn _k, l1, l2 -> l1 + l2 end)
+    |> Map.new(fn {k, v} -> {k, max(v, 0)} end)
+  end
+
+  def part2() do
+    read_input()
+    |> Enum.map(&parse_row/1)
+    |> Enum.map(&List.flatten/1)
+    |> Enum.filter(&(!Enum.empty?(&1)))
+    |> Enum.reduce(%{}, &run2/2)
+    |> Map.values()
+    |> Enum.sum()
+  end
 end
