@@ -28,4 +28,29 @@ defmodule Day8 do
 
     {n1, n2, n1 - n2}
   end
+
+  def escape([]), do: 0
+
+  def escape(str) do
+    case List.first(str) do
+      "\"" -> 2 + escape(Enum.drop(str, 1))
+      "\\" -> 2 + escape(Enum.drop(str, 1))
+      _ -> 1 + escape(Enum.drop(str, 1))
+    end
+  end
+
+  def part2() do
+    input = read_input()
+    prev = input |> Enum.map(&String.length/1) |> Enum.sum()
+
+    processed =
+      input
+      |> Enum.map(&String.graphemes/1)
+      |> Enum.map(&escape/1)
+      # add all quotes
+      |> Enum.map(&(&1 + 2))
+      |> Enum.sum()
+
+    {processed, prev, processed - prev}
+  end
 end
