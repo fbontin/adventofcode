@@ -25,4 +25,23 @@ defmodule Day14 do
   def part1() do
     read_input() |> Enum.map(&parse_row/1) |> Enum.map(fn r -> run(r, 2503) end) |> Enum.max()
   end
+
+  def award_point(distances) do
+    highest = distances |> Enum.max()
+    distances |> Enum.map(fn d -> if d == highest, do: 1, else: 0 end)
+  end
+
+  def add_lists(l1, l2) do
+    Enum.zip(l1, l2) |> Enum.map(fn {n1, n2} -> n1 + n2 end)
+  end
+
+  def part2() do
+    reindeers = read_input() |> Enum.map(&parse_row/1)
+
+    1..2503
+    |> Enum.map(fn n -> Enum.map(reindeers, fn r -> run(r, n) end) end)
+    |> Enum.map(&award_point/1)
+    |> Enum.reduce(List.duplicate(0, length(reindeers)), &add_lists/2)
+    |> Enum.max()
+  end
 end
