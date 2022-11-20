@@ -1,7 +1,6 @@
 defmodule Day18 do
   def read_input() do
     File.read!('data/18.txt') |> String.trim() |> String.split("\n")
-    # [".#.#.#", "...##.", "#....#", "..#...", "#.#..#", "####.."]
   end
 
   def parse_row({row, y}) do
@@ -40,8 +39,7 @@ defmodule Day18 do
 
   def run(lights, n) do
     lights
-    |> Map.keys()
-    |> Enum.map(fn pos -> {pos, update_light(pos, lights)} end)
+    |> Enum.map(fn {pos, _} -> {pos, update_light(pos, lights)} end)
     |> Enum.reduce(%{}, fn {pos, l}, m -> Map.put(m, pos, l) end)
     |> print()
     |> run(n - 1)
@@ -49,6 +47,24 @@ defmodule Day18 do
 
   def part1() do
     read_input() |> parse_input() |> run(100) |> Map.values() |> Enum.count(&(&1 == "#"))
+  end
+
+  def run2(lights, 0), do: lights
+
+  def run2(lights, n) do
+    size = lights |> Map.keys() |> Enum.map(fn {k, _} -> k end) |> Enum.max()
+    corners = %{{0, 0} => "#", {0, size} => "#", {size, 0} => "#", {size, size} => "#"}
+
+    lights
+    |> Enum.map(fn {pos, _} -> {pos, update_light(pos, lights)} end)
+    |> Enum.reduce(%{}, fn {pos, l}, m -> Map.put(m, pos, l) end)
+    |> Map.merge(corners)
+    |> print()
+    |> run2(n - 1)
+  end
+
+  def part2() do
+    read_input() |> parse_input() |> run2(100) |> Map.values() |> Enum.count(&(&1 == "#"))
   end
 
   def print(lights) do
