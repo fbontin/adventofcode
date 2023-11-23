@@ -28,7 +28,29 @@ fn part_1() {
     println!("Part 1: {result:?}");
 }
 
+fn calc_ribbon(s: String) -> i32 {
+    let mut dims = parse_ints(s);
+    dims.sort();
+    let [d1, d2, d3] = dims;
+
+    let wrap = d1 * 2 + d2 * 2;
+    let ribbon = d1 * d2 * d3;
+
+    wrap + ribbon
+}
+
+fn part_2() {
+    let result = include_str!("../data.txt")
+        .lines()
+        .map(|s| calc_ribbon(String::from(s)))
+        .reduce(|a, b| a + b)
+        .unwrap();
+
+    println!("Part 2: {result:?}");
+}
+
 fn main() {
     part_1();
+    part_2();
 }
 
