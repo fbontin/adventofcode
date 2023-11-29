@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 use regex::Regex;
 
@@ -9,7 +9,7 @@ enum State {
     Toggle,
 }
 
-#[derive(Debug, Eq, Hash, PartialEq)]
+#[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 struct Point(u32, u32);
 
 #[derive(Debug)]
@@ -89,6 +89,39 @@ fn part_1() {
     println!("Part 1: {res:?}");
 }
 
+fn run_2(instructions: Vec<Instr>) -> i32 {
+    let mut lights: HashMap<Point, i32> = HashMap::new();
+    let starting_points = generate_points(Point(0, 0), Point(999, 999));
+    for sp in starting_points {
+        lights.insert(sp, 0);
+    }
+
+    for instr in instructions {
+        let points = generate_points(instr.from, instr.to);
+        for p in points {
+            match instr.state {
+                State::On => lights.insert(p, lights.get(&p).unwrap() + 1),
+                State::Off => lights.insert(p, i32::max(lights.get(&p).unwrap() - 1, 0)),
+                State::Toggle => lights.insert(p, lights.get(&p).unwrap() + 2),
+            };
+        }
+    }
+
+    lights
+        .into_iter()
+        .map(|(_, b)| b)
+        .reduce(|a, b| a + b)
+        .unwrap()
+}
+
+fn part_2() {
+    let instructions = parse_input();
+    let res = run_2(instructions);
+
+    println!("Part 2: {res:?}");
+}
+
 fn main() {
     part_1();
+    part_2();
 }
