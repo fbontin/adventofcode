@@ -26,4 +26,12 @@ defmodule Day1 do
   def part1() do
     read_input() |> parse_to_lists() |> calc_distances()
   end
+
+  def calc_score({l1, l2}) do
+    l1 |> Enum.map(fn n -> Enum.count(l2, &(&1 == n)) * n end) |> Enum.sum()
+  end
+
+  def part2() do
+    read_input() |> parse_to_lists() |> calc_score()
+  end
 end
