@@ -3,6 +3,8 @@
 To run code for one day, run `ìex -S mix` in the terminal. 
 In the interactive shell you can then call functions, like `Day1.part1` to run them.
 
+When in the shell, recompile by writing `recompile`.
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
