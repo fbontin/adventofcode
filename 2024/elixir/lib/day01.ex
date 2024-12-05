@@ -1,6 +1,6 @@
 defmodule Day1 do
   def read_input() do
-    File.read!(~c"data/01.txt") |> String.trim() |> String.split("\n")
+    File.read!("data/01.txt") |> String.trim() |> String.split("\n")
   end
 
   def split(line) do
